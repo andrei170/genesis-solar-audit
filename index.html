@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Genesis Solar Systems — Audit</title><style>
+:root{--bg:#0d1117;--panel:#161b22;--ink:#e6edf3;--mut:#9aa7b4;--line:#2a3340;--accent:#2f81f7;
+  --good:#3fb950;--bad:#f85149;--gradF:#f85149;--gradD:#e8702a;--gradC:#d29922;--gradB:#3fb950;--gradA:#2ea043;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--mut);font-weight:600}
+header{padding:46px 0 28px;border-bottom:1px solid var(--line);background:radial-gradient(1200px 400px at 70% -10%,rgba(47,129,247,.18),transparent)}
+h1{font-size:30px;font-weight:800;margin:10px 0 6px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:15px}
+.hero{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:center;margin:34px 0 8px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.gradecard{border:1px solid var(--line);border-radius:18px;padding:26px;text-align:center;position:relative;overflow:hidden}
+.gc-F{background:linear-gradient(160deg,#2a1410,#1c2330)}.gc-D{background:linear-gradient(160deg,#2a1c10,#1c2330)}
+.gc-C{background:linear-gradient(160deg,#2a2410,#1c2330)}.gc-B{background:linear-gradient(160deg,#102a1a,#1c2330)}
+.bigletter{font-size:96px;font-weight:900;line-height:1;position:relative}
+.bl-F{color:var(--gradF);text-shadow:0 0 40px rgba(248,81,73,.45)}
+.bl-D{color:var(--gradD);text-shadow:0 0 40px rgba(232,112,42,.45)}
+.bl-C{color:var(--gradC);text-shadow:0 0 40px rgba(210,153,34,.45)}
+.score100{font-size:18px;color:var(--mut);margin-top:6px;position:relative}
+.heroread h2{font-size:21px;font-weight:800;margin-bottom:10px}
+.heroread p{color:var(--mut);font-size:15.5px}
+.heroread .tag{display:inline-block;margin-top:14px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink);background:var(--panel)}
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+.h{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.row{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.rname{font-weight:600;font-size:15px}
+.bar{height:7px;background:#0b0f15;border-radius:99px;margin-top:9px;overflow:hidden}
+.fill{height:100%;border-radius:99px}
+.badge{font-weight:800;font-size:15px;min-width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0d1117}
+.gF{background:var(--gradF)}.gD{background:var(--gradD)}.gC{background:var(--gradC)}.gB{background:var(--gradB);color:#06210f}.gA{background:var(--gradA);color:#06210f}
+.sc{font-size:12px;color:var(--mut);margin-top:3px}
+.flag{background:linear-gradient(160deg,#2a1410,#161b22);border:1px solid #6f2a1f;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.flag .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--bad);font-weight:700;margin-bottom:8px}
+.win{background:linear-gradient(160deg,#0f2417,#161b22);border:1px solid #1f6f3a;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.win .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--good);font-weight:700;margin-bottom:8px}
+.warn{background:linear-gradient(160deg,#2a2410,#161b22);border:1px solid #6f5a1f;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.warn .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--gradC);font-weight:700;margin-bottom:8px}
+.flag p,.win p,.warn p{color:var(--mut);font-size:14.5px;margin-bottom:9px}
+.flag p:last-child,.win p:last-child,.warn p:last-child{margin-bottom:0}
+.flag b,.win b,.warn b{color:var(--ink)}
+.flag ul,.win ul,.warn ul{margin:0 0 9px 20px;color:var(--mut);font-size:14.5px}
+.flag li,.win li,.warn li{margin-bottom:6px}
+.code{background:#0b0f15;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px;line-height:1.85;color:var(--mut);overflow-x:auto}
+.code .ph{color:#ff9d94;font-weight:700}.code .ok{color:#84e0a8;font-weight:700}.code .c{color:#5b6672}
+.cmp{width:100%;border-collapse:collapse;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cmp th{text-align:left;padding:11px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line);font-weight:700}
+.cmp td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--mut);vertical-align:top}
+.cmp tr:last-child td{border-bottom:none}.cmp td b{color:var(--ink)}.cmp tr.you td{background:#241a12}
+.cmp .yes{color:var(--good);font-weight:700}.cmp .no{color:var(--bad);font-weight:700}
+.opp{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.opp{grid-template-columns:1fr}}
+.ocard{background:linear-gradient(160deg,#0f2417,#161b22);border:1px solid #1f6f3a;border-radius:14px;padding:20px;text-align:center}
+.ocard .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut)}
+.ocard .big{font-size:30px;font-weight:900;color:var(--good);margin:8px 0 2px}
+.ocard .small{font-size:13px;color:var(--mut)}
+.oppnote{color:var(--mut);font-size:14px;margin-top:14px}.oppnote b{color:var(--ink)}
+.arrow{display:flex;align-items:center;justify-content:center;gap:18px;margin:6px 0 2px;flex-wrap:wrap}
+.pill{font-size:60px;font-weight:900;line-height:1}
+.pill.from-F{color:var(--gradF)}.pill.from-D{color:var(--gradD)}.pill.from-C{color:var(--gradC)}
+.pill.to{color:var(--gradA)}
+.pilllab{font-size:12px;color:var(--mut);text-align:center;text-transform:uppercase;letter-spacing:.1em}
+.ar{font-size:34px;color:var(--mut)}
+ul.road{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:760px){ul.road{grid-template-columns:1fr}}
+ul.road li{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;font-size:14.5px}
+.road2 li{border-left-color:var(--good)}
+.cta{text-align:center;padding:40px 0 56px}
+.cta h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.cta p{color:var(--mut);font-size:15px}
+footer{color:var(--mut);font-size:12.5px;text-align:center;padding:22px 0 40px;line-height:1.7}
+.gscale{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 26px 20px;margin-top:16px}
+.gscale .gtitle{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);font-weight:700;margin-bottom:26px;text-align:center}
+.gtrack{position:relative;height:14px;border-radius:8px;background:linear-gradient(90deg,#f85149 0%,#f85149 18%,#e3833c 34%,#d4a72c 52%,#7ec46a 74%,#3fb950 100%);margin:0 4px}
+.gmark{position:absolute;top:-46px;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.gmark .gm-lab{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:700}
+.gmark .gm-val{font-size:19px;font-weight:900;line-height:1.15}
+.gmark:after{content:"";position:absolute;left:50%;top:100%;width:2px;height:22px;transform:translateX(-50%);background:currentColor;opacity:.75}
+.gmark.now{color:var(--bad)}.gmark.now .gm-val{color:var(--bad)}
+.gmark.proj{color:var(--good)}.gmark.proj .gm-val{color:var(--good)}
+.gmark.proj{top:auto;bottom:-52px}
+.gmark.proj:after{top:auto;bottom:100%}
+.gdot{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);border:3px solid #0d1117}
+.gdot.now{background:var(--bad)}.gdot.proj{background:var(--good)}
+.gticks{display:flex;justify-content:space-between;margin:66px 4px 0;font-size:11px;letter-spacing:.08em;color:var(--mut);font-weight:700}
+@media(max-width:620px){.gmark .gm-lab{font-size:9px}.gmark .gm-val{font-size:16px}}
+</style></head><body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Website &amp; Measurement Audit</div>
+    <h1>Genesis Solar Systems LLC &mdash; Tallahassee, Florida</h1>
+    <div class="sub">Prepared for Ean Scanameo &middot; 31 August 2026 &middot; AG1 Consulting</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="gradecard gc-D">
+      <div class="bigletter bl-D">D</div>
+      <div class="score100">41 / 100</div>
+    </div>
+    <div class="heroread">
+      <h2>You are a numbers person with no numbers.</h2>
+      <p>Santiago told us you want to see the information and work out for yourself whether we are
+      different. <b>Fair &mdash; so here is the first number: there is no analytics, no tag manager, no
+      pixel and no call tracking anywhere on your website.</b> Whatever you are currently doing to get
+      customers, there is no record of what any of it produced.</p>
+      <span class="tag">Tallahassee &middot; Leon &amp; Gadsden &middot; service-led solar &middot; zero measurement</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="h">Finding 1 &mdash; Nothing Is Measured At All</div>
+    <div class="flag">
+      <div class="lab">Read from the live page source</div>
+      <div class="code">Google Analytics 4  <span class="ph">not present</span>
+Google Tag Manager  <span class="ph">not present</span>
+Google Ads tag      <span class="ph">not present</span>
+Meta pixel          <span class="ph">not present</span>
+Call tracking       <span class="ph">not present</span>
+Forms               <span class="ok">1</span></div>
+      <p><b>Analytics records only from the day it is installed.</b> Every week it is not on the site is
+      a week of history you can never get back &mdash; and it is free.</p>
+      <p><b>For somebody who wants to evaluate things on evidence, this is the binding constraint.</b>
+      You cannot judge a marketing company, including us, without a baseline. Right now there is
+      nothing to compare an "after" against.</p>
+      <p><b>This is also the first thing we would do</b>, before proposing anything at all &mdash;
+      because we would rather be judged on measured numbers than on a good conversation.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">Finding 2 &mdash; Your Business Is Already Built For The Market That Now Exists</div>
+    <div class="win">
+      <div class="lab">This is the most valuable thing in this document and you may not have noticed it</div>
+      <p><b>The federal residential solar credit ended for systems placed in service after 31 December
+      2025.</b> Across the country, companies whose entire model was selling new residential
+      installations on that 30% argument are in serious trouble &mdash; several large ones have gone
+      bankrupt.</p>
+      <p><b>You do not sell that.</b> Read your own service list back:</p>
+      <div class="code">Panel cleaning &amp; ceramic coating   <span class="ok">no credit involved</span>
+Maintenance &amp; monitoring          <span class="ok">no credit involved</span>
+Inverter upgrades                <span class="ok">no credit involved</span>
+Removal &amp; reinstall for roofing   <span class="ok">no credit involved</span>
+Additional panels                <span class="ok">upgrade to an existing owner</span>
+Battery storage                  <span class="ok">the one area still strongly supported</span></div>
+      <p><b>Every line of that is work on systems that already exist</b>, bought by people who already
+      own solar. <b>The tax change did not touch your business model.</b> It damaged your competitors'.</p>
+      <p><b>And Florida has a very large installed base</b> of systems put in during the boom years,
+      many of them sold by companies that no longer exist. Those systems are now five to ten years old,
+      dirty, occasionally faulting, and due roof replacements. <b>That is your market and it grows on
+      its own.</b></p>
+      <p><b>We are not tax advisers and this is not tax advice</b> &mdash; confirm the position with
+      your CPA. But commercially, the point stands.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">Finding 3 &mdash; A Gmail Address On A Domain You Own</div>
+    <div class="warn">
+      <div class="lab">Small, and it costs more than it looks</div>
+      <div class="code">Published email   <span class="ph">genesissolarsystems1@gmail.com</span>
+Domain you own    <span class="ok">genesissolarsystems.com</span></div>
+      <p><b>You own the domain, so ean@genesissolarsystems.com costs nothing extra.</b> On a $300
+      cleaning job nobody minds. On a battery quote worth five figures, or a commercial enquiry, a gmail
+      address is the detail that makes a cautious buyer hesitate.</p>
+      <p><b>There is a second, more practical reason.</b> Email sent from a free address to a business
+      is more likely to be filtered, and we understand a previous message to this business bounced.
+      <b>Mail on your own domain, configured properly, is more reliable as well as more credible.</b></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">Finding 4 &mdash; One Form, And &ldquo;By Appointment Only&rdquo;</div>
+    <div class="warn">
+      <div class="lab">Where the enquiries are going</div>
+      <p>You have <b>one form</b> and a tappable number, and the site says <b>by appointment only</b>.
+      That is honest, and for a service business it is reasonable &mdash; but it means everybody who
+      lands outside working hours has one option: remember you tomorrow.</p>
+      <p><b>Service work is a repeat purchase and nothing on the site asks for the second one.</b>
+      Panels in north Florida need cleaning more than once a year. A customer you cleaned for last
+      spring is the cheapest job you will ever win, and there is currently no reminder, no schedule and
+      no reason for them to come back to you rather than search again.</p>
+      <p><b>That is the highest-return change available to you</b>, and it costs less than any
+      advertising.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">What Is Genuinely Good</div>
+    <div class="win">
+      <div class="lab">The positioning is better than the measurement</div>
+      <ul>
+        <li><b>A clear, specific service list</b> &mdash; cleaning, ceramic coating, maintenance, monitoring, inverter upgrades, additional panels, battery storage, and removal and reinstall for roof work.</li>
+        <li><b>Removal and reinstall is a genuinely smart line.</b> Every roof replacement in Florida on a house with panels needs somebody to do it, most roofers will not touch it, and it comes with a deadline.</li>
+        <li><b>Battery storage</b> &mdash; the part of the market with the strongest remaining support.</li>
+        <li><b>A working enquiry form</b> and tap-to-call on 850-350-6165.</li>
+        <li><b>Named counties</b> &mdash; Leon and Gadsden, plus Jacksonville.</li>
+        <li><b>Licensed and insured</b> stated, with warranty language throughout.</li>
+        <li><b>A fast, modern site.</b> Technically it is well built.</li>
+      </ul>
+      <p><b>The strategy is right. The instrumentation is missing.</b></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">The Scorecard</div>
+    <div class="grid">
+      <div class="row"><div><div class="rname">Analytics</div><div class="sc">Nothing installed. No baseline exists for judging anything.</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Conversion tracking</div><div class="sc">None. Form submissions are not counted.</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Call tracking</div><div class="sc">None, on a business where the phone is the enquiry.</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Rating and review count</div><div class="sc">No visible rating or count anywhere.</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Repeat booking</div><div class="sc">Nothing asks a past customer to book their next service.</div></div><div class="badge gD">D</div></div>
+      <div class="row"><div><div class="rname">Business email</div><div class="sc">Gmail published while you own the domain.</div></div><div class="badge gD">D</div></div>
+      <div class="row"><div><div class="rname">County pages</div><div class="sc">Leon, Gadsden and Jacksonville named, none with a page.</div></div><div class="badge gD">D</div></div>
+      <div class="row"><div><div class="rname">Form coverage</div><div class="sc">One form. Fine for the volume, thin for out-of-hours.</div></div><div class="badge gC">C</div></div>
+      <div class="row"><div><div class="rname">Site build quality</div><div class="sc">Fast, modern and technically sound.</div></div><div class="badge gB">B</div></div>
+      <div class="row"><div><div class="rname">Tap-to-call</div><div class="sc">850-350-6165, working.</div></div><div class="badge gB">B</div></div>
+      <div class="row"><div><div class="rname">Service clarity</div><div class="sc">Specific, well-explained, and unusually complete.</div></div><div class="badge gA">A&minus;</div></div>
+      <div class="row"><div><div class="rname">Market positioning</div><div class="sc">Service-led on existing systems &mdash; the half of solar the credit change did not damage.</div></div><div class="badge gA">A</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="h">The Opportunity</div>
+    <div class="opp">
+      <div class="ocard"><div class="lab">Channels you can measure</div><div class="big">0</div><div class="small">nothing is tracked at all</div></div>
+      <div class="ocard"><div class="lab">Days of history you own</div><div class="big">0</div><div class="small">analytics only records from install day</div></div>
+      <div class="ocard"><div class="lab">Service lines the tax change hurt</div><div class="big">0</div><div class="small">of the eight you offer</div></div>
+    </div>
+    <p class="oppnote"><b>No revenue figure appears in this document.</b> We do not know your job counts,
+    your average ticket, or your split between cleaning and battery work. <b>Bring three numbers to the
+    call</b> &mdash; service jobs a month, average ticket, and how many four-figure jobs you do &mdash;
+    and the arithmetic becomes real rather than rhetorical.</p>
+  </section>
+
+  <section>
+    <div class="h">Projected Grade After Build</div>
+    <div class="arrow">
+      <div class="gradecard gc-D" style="flex:1"><div class="bigletter bl-D">D</div><div class="score100">41 / 100 today</div></div>
+      <div class="ar">&rarr;</div>
+      <div class="gradecard gc-B" style="flex:1"><div class="bigletter" style="color:#3fb950;text-shadow:0 0 40px rgba(63,185,80,.45)">A</div><div class="score100">90 / 100 projected</div></div>
+    </div>
+    <div class="gscale">
+      <div class="gtitle">Where you sit today, and where the twelve rows above put you</div>
+      <div class="gtrack">
+        <div class="gmark now" style="left:41%"><div class="gm-lab">You today</div><div class="gm-val">D &middot; 41</div></div>
+        <div class="gdot now" style="left:41%"></div>
+        <div class="gdot proj" style="left:90%"></div>
+        <div class="gmark proj" style="left:90%"><div class="gm-val">A &middot; 90</div><div class="gm-lab">After the build</div></div>
+      </div>
+      <div class="gticks"><span>F</span><span>D</span><span>C</span><span>B</span><span>A</span><span>A+</span></div>
+    </div>
+    <p class="oppnote">Projected, not promised. <b>It is not a projection of leads, jobs or revenue.</b></p>
+  </section>
+
+  <section>
+    <div class="h">Fix First &mdash; And The First One Is Free</div>
+    <ul class="road">
+      <li><b>Install GA4 today.</b> Free, and every day without it is history you cannot recover</li>
+      <li><b>Move email onto your own domain</b> &mdash; more credible and more deliverable</li>
+      <li><b>Add a repeat-service reminder</b> for customers you have already cleaned for</li>
+      <li><b>Ask recent customers for a Google review</b> and put the rating on the site</li>
+    </ul>
+    <div class="h" style="margin-top:24px">Build Next</div>
+    <ul class="road road2">
+      <li><b>Conversion and call tracking</b>, so the phone stops being invisible</li>
+      <li><b>A page for the removal-and-reinstall work</b>, aimed at roofers as much as homeowners &mdash; they are your best referral source</li>
+      <li><b>County pages</b> for Leon, Gadsden and the Jacksonville corridor</li>
+      <li><b>Then advertise</b>, once there is a baseline to judge it against</li>
+    </ul>
+  </section>
+
+  <div class="cta">
+    <h2>You asked to see the information. The problem is that there is not any yet.</h2>
+    <p>Analytics first, then a baseline, then a decision. We would rather be judged on measured numbers
+    than on a good conversation.</p>
+  </div>
+</div>
+
+<footer>
+  Prepared by Andrei Givero &middot; AG1 Consulting &middot; 31 August 2026<br>
+  For Ean Scanameo of Genesis Solar Systems LLC, Tallahassee, Florida. All findings were read from
+  genesissolarsystems.com on 31 August 2026. <b>The absence of analytics, tag manager, advertising and
+  call-tracking tags was determined from the page source we read; tags added by script after the page
+  loads, or present on pages we did not read, would not appear in that check &mdash; please verify
+  before drawing a conclusion.</b> Your licensed and insured status, warranty statements and service
+  list are your own published claims and have not been independently verified. <b>NOTHING IN THIS
+  DOCUMENT IS TAX ADVICE. Our understanding is that the Section 25D residential clean energy credit
+  was terminated for property placed in service after 31 December 2025 and that support for battery
+  storage differs; tax law changes, our understanding may be incomplete, and how any of it applies to
+  your business depends on facts we do not have. You must confirm all of it with a qualified CPA.</b>
+  Statements about the Florida installed base, panel cleaning frequency and competitor failures are
+  general commercial observations, not researched findings about your market. <b>The reference to a
+  bounced email relates to an address our team attempted to contact and is included only to explain the
+  practical recommendation about email hosting.</b> Grades are our own assessment against a consistent
+  framework. <b>No number of leads, jobs, customers or revenue is promised or forecast anywhere.</b>
+</footer>
+</body></html>
